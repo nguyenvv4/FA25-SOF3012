@@ -26,6 +26,7 @@ public class LopHocRepo {
            query.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
+            tran.rollback();
         }
         tran.commit();
     }

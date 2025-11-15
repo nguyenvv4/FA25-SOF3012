@@ -23,6 +23,7 @@ public class LopHocServlet extends HttpServlet {
         } else if (uri.equals("/lop-hoc/xoa")) {
             Integer id = Integer.parseInt(request.getParameter("id"));
             lopHocService.xoa(id);
+            response.sendRedirect("/lop-hoc/hien-thi");
         }
     }
 
