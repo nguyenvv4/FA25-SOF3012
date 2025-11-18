@@ -21,14 +21,34 @@ public class LopHocRepo {
         Session session = HibernateUtils.getFACTORY().openSession();
         Transaction tran = session.beginTransaction();
         try {
-           Query query = session.createQuery("delete from LopHoc where id = :id");
-           query.setParameter("id", id);
-           query.executeUpdate();
+            Query query = session.createQuery("delete from LopHoc where id = :id");
+            query.setParameter("id", id);
+            query.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
             tran.rollback();
         }
         tran.commit();
+    }
+
+    public void them(LopHoc lopHoc) {
+        Session session = HibernateUtils.getFACTORY().openSession();
+        Transaction tran = session.beginTransaction();
+        try {
+            session.save(lopHoc);
+        } catch (Exception e) {
+            e.printStackTrace();
+            tran.rollback();
+        }
+        tran.commit();
+    }
+
+    public LopHoc chiTiet(Integer id) {
+        Session session = HibernateUtils.getFACTORY().openSession();
+        Query query = session.createQuery("from LopHoc where id = :id");
+        query.setParameter("id", id);
+        LopHoc lopHoc = (LopHoc) query.getSingleResult();
+        return lopHoc;
     }
 
     public static void main(String[] args) {

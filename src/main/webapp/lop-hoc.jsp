@@ -15,6 +15,17 @@
 
 </head>
 <body>
+<form action="/lop-hoc/them" method="post">
+    <p><label>Ten lop</label>
+        <input type="text" name="tenLop"></p>
+    <p><label>Gvcn</label>
+        <input type="text" name="gvcn"></p>
+    <p><label>Trang thai</label>
+        <input type="radio" name="trangThai" value="Dang hoc"> Dang hoc
+        <input type="radio" name="trangThai" value="Ket thuc"> Ket thuc </p>
+    <button type="submit">Add</button>
+</form>
+
 <table class="table">
     <thead>
     <tr>
@@ -35,6 +46,7 @@
             <td>${lh.trangThai}</td>
             <td>${lh.createdAt}</td>
             <td><a href="/lop-hoc/xoa?id=${lh.id}" class="btn btn-primary">Xoa</a></td>
+            <td><a href="/lop-hoc/chi-tiet?id=${lh.id}" class="btn btn-primary">Chi tiet</a></td>
         </tr>
     </c:forEach>
     </tbody>
