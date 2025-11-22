@@ -25,4 +25,8 @@ public class LopHocService {
     public LopHoc chiTiet(Integer id) {
         return lopHocRepo.chiTiet(id);
     }
+
+    public void capNhat(LopHoc lopHoc) {
+        lopHocRepo.capNhat(lopHoc);
+    }
 }

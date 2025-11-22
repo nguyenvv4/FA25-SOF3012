@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/lop-hoc/them" method="post">
+<form action="/lop-hoc/cap-nhat?id=${lopHoc.id}" method="post">
     <p><label>Ten lop</label>
         <input type="text" name="tenLop" value="${lopHoc.tenLop}"></p>
     <p><label>Gvcn</label>

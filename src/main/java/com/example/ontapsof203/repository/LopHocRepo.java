@@ -51,6 +51,18 @@ public class LopHocRepo {
         return lopHoc;
     }
 
+    public void capNhat(LopHoc lopHoc) {
+        Session session = HibernateUtils.getFACTORY().openSession();
+        Transaction tran = session.beginTransaction();
+        try {
+            session.saveOrUpdate(lopHoc);
+        } catch (Exception e) {
+            e.printStackTrace();
+            tran.rollback();
+        }
+        tran.commit();
+    }
+
     public static void main(String[] args) {
         LopHocRepo lopHocRepo = new LopHocRepo();
         List<LopHoc> lopHocs = lopHocRepo.findAll();

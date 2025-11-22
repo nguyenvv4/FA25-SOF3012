@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.*;
         "/lop-hoc/xoa",
         "/lop-hoc/them",
         "/lop-hoc/chi-tiet",
+        "/lop-hoc/cap-nhat",
 })
 public class LopHocServlet extends HttpServlet {
 
@@ -53,6 +54,19 @@ public class LopHocServlet extends HttpServlet {
             lopHoc.setCreatedAt(new Date());
             lopHocService.them(lopHoc);
             response.sendRedirect("/lop-hoc/hien-thi");
+        } else if (uri.contains("/lop-hoc/cap-nhat")) {
+            Integer id = Integer.parseInt(request.getParameter("id"));
+            String tenLop = request.getParameter("tenLop");
+            String gvcn = request.getParameter("gvcn");
+            String trangThai = request.getParameter("trangThai");
+            LopHoc lopHoc = new LopHoc();
+            lopHoc.setId(id);
+            lopHoc.setTenLop(tenLop);
+            lopHoc.setGvcn(gvcn);
+            lopHoc.setTrangThai(trangThai);
+            lopHocService.capNhat(lopHoc);
+            response.sendRedirect("/lop-hoc/hien-thi");
+
         }
     }
 }
